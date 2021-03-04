@@ -1,0 +1,215 @@
+<title>Spyne - All Photographers</title>
+<style>
+#dataTable thead tr, #dashboard thead tr,
+#dataTable1 thead tr,
+#dataTable2 thead tr,
+#dataTable3 thead tr {
+	background-color: #EBEBEB;
+	font-size: 14px;
+	font-family: Segoe UI Semibold;
+}
+
+#dataTable thead tr th, #dashboard thead tr th,
+#dataTable1 thead tr th,
+#dataTable2 thead tr th,
+#dataTable3 thead tr th {
+	padding-bottom: 14px;
+	border: none;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+#dataTable tbody tr, #dashboard tbody tr,
+#dataTable1 tbody tr,
+#dataTable2 tbody tr,
+#dataTable3 tbody tr {
+	counter-increment: rowNumber;
+	background-color: #e6e4e4;
+}
+
+#dataTable tbody tr td:first-child::before, #dashboard tbody tr td:first-child::before,
+#dataTable1 tbody tr td:first-child::before,
+#dataTable2 tbody tr td:first-child::before,
+#dataTable3 tbody tr td:first-child::before
+	{
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+	padding-left: 13px;
+}
+
+#dataTable tbody tr td:first-child, #dashboard tbody tr td:first-child,
+#dataTable1 tbody tr td:first-child,
+#dataTable2 tbody tr td:first-child,
+#dataTable3 tbody tr td:first-child {
+	border-right: 1px solid #EBEBEB;
+}
+
+#dataTable tbody tr td, #dashboard tbody tr td,
+#dataTable1 tbody tr td,
+#dataTable2 tbody tr td,
+#dataTable3 tbody tr td {
+	color: #000000;
+	vertical-align: middle;
+  text-align: center;
+}
+  #dataTable tbody, #dashboard tbody,
+  #dataTable1 tbody,
+  #dataTable2 tbody,
+  #dataTable3 tbody  {
+	font-size: 14px;
+}
+
+#dashboard tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dataTable tbody tr:nth-child(odd), #dashboard tbody tr:nth-child(odd),
+#dataTable1 tbody tr:nth-child(odd),
+#dataTable2 tbody tr:nth-child(odd),
+#dataTable3 tbody tr:nth-child(odd) {
+	background-color: #FFF;
+}
+.my-2 {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+
+<h2>Spyne Frames - Daily Reports</h2>
+
+<div class="container my-2">
+  <div class="row">
+    <div class="col-xs-12">
+		<h4>Daily No. of New Registrations</h4>
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table id="dataTable" class="table data-lead-table dataTable no-footer">
+          <thead>
+		  <tr>
+		  	<th>No</th>
+            <th>Date</th>
+            <th>New Registrations</th>
+		  </tr>
+          </thead>
+          <tbody>
+			{% for data in reg %}
+			<tr>
+                <td></td>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[0] }}</td>
+			</tr>
+			{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-2">
+	<div class="row">
+	  <div class="col-xs-12">
+		  <h4>Daily No. of Projects Shared</h4>
+		<div class="table-responsive" data-pattern="priority-columns">
+		  <table id="dataTable1" class="table data-lead-table dataTable no-footer">
+			<thead>
+			<tr>
+				<th>No</th>
+			  <th>Date</th>
+			  <th>Projects Shared</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for data in shared %}
+			  <tr>
+				  <td></td>
+				  <td>{{ data[1] }}</td>
+				  <td>{{ data[0] }}</td>
+			  </tr>
+			{% endfor %}
+			</tbody>
+		  </table>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="container my-2">
+	<div class="row">
+	  <div class="col-xs-12">
+		  <h4>Daily Total Size Uploaded</h4>
+		<div class="table-responsive" data-pattern="priority-columns">
+		  <table id="dataTable2" class="table data-lead-table dataTable no-footer">
+			<thead>
+			<tr>
+				<th>No</th>
+			  <th>Date</th>
+			  <th>Size Uploaded (MB)</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for data in size %}
+			  <tr>
+				  <td></td>
+				  <td>{{ data[1] }}</td>
+				  <td>{{ data[0] }}</td>
+			  </tr>
+			{% endfor %}
+			</tbody>
+		  </table>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="container my-2">
+	<div class="row">
+	  <div class="col-xs-12">
+		  <h4>Number of Videos Status (Review or Approved)</h4>
+		<div class="table-responsive" data-pattern="priority-columns">
+		  <table id="dataTable3" class="table data-lead-table dataTable no-footer">
+			<thead>
+			<tr>
+				<th>No</th>
+			  <th>Date</th>
+			  <th>Videos in Review</th>
+			  <th>Videos in Approved</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for data in videos %}
+			  <tr>
+				  <td></td>
+				  <td>{{ data[1] }}</td>
+				  <td>{{ data[0] }}</td>
+				  <td>{{ data[2] }}</td>
+			  </tr>
+			{% endfor %}
+			</tbody>
+		  </table>
+		</div>
+	  </div>
+	</div>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+	});
+	$('#dataTable1').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+	});
+	$('#dataTable2').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+	});
+	$('#dataTable3').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+	});
+	
+} );
+</script>

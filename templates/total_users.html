@@ -1,0 +1,101 @@
+<title>Spyne - Total Paid Vendors</title>
+<style>
+  #dataTable thead tr, #dashboard thead tr {
+	background-color: #EBEBEB;
+	font-size: 14px;
+	font-family: Segoe UI Semibold;
+}
+
+#dataTable thead tr th, #dashboard thead tr th {
+	padding-bottom: 14px;
+	border: none;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+#dataTable tbody tr, #dashboard tbody tr {
+	counter-increment: rowNumber;
+	background-color: #e6e4e4;
+}
+
+#dataTable tbody tr td:first-child::before, #dashboard tbody tr td:first-child::before
+	{
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+	padding-left: 13px;
+}
+
+#dataTable tbody tr td:first-child, #dashboard tbody tr td:first-child {
+	border-right: 1px solid #EBEBEB;
+}
+
+#dataTable tbody tr td, #dashboard tbody tr td {
+	color: #000000;
+	vertical-align: middle;
+  text-align: center;
+}
+  #dataTable tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dashboard tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dataTable tbody tr:nth-child(odd), #dashboard tbody tr:nth-child(odd) {
+	background-color: #FFF;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<h2>Spyne - Total Paid Vendors</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table id="dataTable" class="table data-lead-table dataTable no-footer">
+          <thead>
+      <tr>
+        <th>No</th>
+		    <th>Name</th> 
+		    <th>vendor_type</th>
+		    <th>subdomain</th>
+		    <th>email_id</th>
+		    <th>mobile_no</th>
+		    <th>vendor_id</th>
+        <th>website</th>
+		  </tr>
+          </thead>
+          <tbody>
+			{% for list in rows %}
+          {% for item in list %}
+          <tr>
+            <td></td>
+            <td>{{item.name}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.subdomain}}</td>
+            <td>{{item.email1}}</td>
+            <td>{{item.phoneNo[0]}}</td>
+            <td>{{item.vendorId}}</td>
+            <td>{{item.website}}</td>
+           </tr> 
+          {% endfor %}
+			{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+} );
+</script>

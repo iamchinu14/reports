@@ -1,0 +1,109 @@
+<title>Spyne - All Users</title>
+<style>
+  #dataTable thead tr, #dashboard thead tr {
+	background-color: #EBEBEB;
+	font-size: 14px;
+	font-family: Segoe UI Semibold;
+}
+
+#dataTable thead tr th, #dashboard thead tr th {
+	padding-bottom: 14px;
+	border: none;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+#dataTable tbody tr, #dashboard tbody tr {
+	counter-increment: rowNumber;
+	background-color: #e6e4e4;
+}
+
+#dataTable tbody tr td:first-child::before, #dashboard tbody tr td:first-child::before
+	{
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+	padding-left: 13px;
+}
+
+#dataTable tbody tr td:first-child, #dashboard tbody tr td:first-child {
+	border-right: 1px solid #EBEBEB;
+}
+
+#dataTable tbody tr td, #dashboard tbody tr td {
+	color: #000000;
+	vertical-align: middle;
+  text-align: center;
+}
+  #dataTable tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dashboard tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dataTable tbody tr:nth-child(odd), #dashboard tbody tr:nth-child(odd) {
+	background-color: #FFF;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<h2>Spyne - All Users</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table id="dataTable" class="table data-lead-table dataTable no-footer">
+          <thead>
+		  <tr>
+        <th>No</th>
+		    <th>created_date</th>
+		    <th>email_id</th>
+		    <th>contact_no</th>
+		    <th>user_id</th>
+		    <th>user_name</th>
+		    <th>is_vendor</th>
+		    <th>city</th>
+		    <th>user_type</th>
+		    <th>user_skill</th>
+		    <th>user_speciality</th>
+		    <th>user_camera</th>
+	      <th>user_experience</th>
+		  </tr>
+          </thead>
+          <tbody>
+			{% for item in rows %}
+			<tr>
+          <td></td>
+			    <td>{{item[0]}}</td>
+			    <td>{{item[1]}}</td>
+			    <td>{{item[2]}}</td>
+			    <td>{{item[3]}}</td>
+			    <td>{{item[4]}}</td>
+			    <td>{{item[5]}}</td>
+			    <td>{{item[6]}}</td>
+			    <td>{{item[7]}}</td>
+			    <td>{{item[8]}}</td>
+		        <td>{{item[9]}}</td>
+		        <td>{{item[10]}}</td>
+		        <td>{{item[11]}}</td>
+			</tr>
+			{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+} );
+</script>

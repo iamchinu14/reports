@@ -1,0 +1,118 @@
+<title>Spyne - Vendor Registrations</title>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+    background-color: #4c4c4c;
+    color: white;
+  }
+  td {
+    border: 1px solid #353535;
+    padding: 10px;
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }  
+</style>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+          <h2>Average Project Share Report</h2>
+        <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="1">No</th> 
+		    <th data-priority="2">Total Shared project</th>
+		    <th data-priority="3">Paid users</th>
+		    <th data-priority="4">Project Shared By V1 Users</th>
+		    <th data-priority="5">Project Shared By V2 Users</th>
+		    <th data-priority="6">Average Project Share</th>
+		  </tr>
+          </thead>
+          <tbody>
+			<tr>
+			    <td>1</td>
+			    <td>{{total_project}}</td>
+			    <td>{{paid_users}}</td>
+			    <td>{{project_by_pro}}</td>
+			    <td>{{project_by_share}}</td>
+			    <td>{{average}}</td>
+			</tr>
+			</tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+      <div class="col-xs-12">
+          <div class="table-responsive" data-pattern="priority-columns">
+              <h2>Average Lead Generated Through share Pop-Up</h2>
+            <table class="table table-bordered table-hover">
+              <thead>
+          <tr style="text-align: left;">
+            <th data-priority="1">No</th> 
+            <th data-priority="2">Lead Count</th>
+            <th data-priority="3">Total Shared project</th>
+            <th data-priority="4">Average Pop-Up Lead(over total projects)</th>
+            <th data-priority="5">Leads From Projects</th>
+             <th data-priority="6">Average Pop-Up Lead(over lead projects)</th>
+          </tr>
+              </thead>
+              <tbody>
+          <tr>
+              <td>1</td>
+              <td>{{hotLeadcount}}</td>
+              <td>{{total_project}}</td>
+              <td>{{average_hot_lead}}</td>
+              <td>{{projects_by_lead}}</td>
+              <td>{{avg_hot_lead_by_lead_projects}}</td>
+          </tr>
+          </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="table-responsive" data-pattern="priority-columns">
+                <h2>Average Project Shared By Client</h2>
+              <table class="table table-bordered table-hover">
+                <thead>
+            <tr style="text-align: left;">
+              <th data-priority="1">No</th> 
+              <th data-priority="2">Share By Client</th>
+              <th data-priority="3">Total Shared project</th>
+              <th data-priority="4">Average Project Shared By Client</th>
+              <th data-priority="4">Total Projects visit</th>
+              <th data-priority="4">Average Project Visit</th>
+            </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td>1</td>
+                <td>{{share_lead_count}}</td>
+                <td>{{total_project}}</td>
+                <td>{{avg_project_share_by_client}}</td>
+                <td>{{total_visit_projects}}</td>
+                <td>{{avg_projects_visit}}</td>
+            </tr>
+            </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+  </div>
+</div>

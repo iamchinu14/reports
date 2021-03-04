@@ -1,0 +1,228 @@
+<title>V2 lead</title>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+    background-color: #4c4c4c;
+    color: white;
+  }
+  td {
+    border: 1px solid #353535;
+    padding: 10px;
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }  
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<h2>Project Share Data Log</h2>
+
+<div class="container mx-1">
+
+        <div class="d-flex">
+          <div class="col-3 px-0">
+            <table class="table table-bordered table-hover">
+            <thead>
+        <tr style="text-align: left;">
+          <th data-priority="1">Month</th>
+          <th data-priority="2">Total Photographer</th>
+        </tr>
+            </thead>
+            <tbody>
+              {% for item in photographer_count %}
+              <tr>
+                  <td>{{item[0]}}</td>
+                  <td>{{item[1]}}</td>
+              </tr>
+              {% endfor %}
+                  </tbody>
+          </table>
+          </div>
+      <div class="col-3 px-0">
+        <table class="table table-bordered table-hover">
+        <thead>
+    <tr style="text-align: left;">
+
+      <th data-priority="1">Paid Photographers(size > 5gb)</th>
+    </tr>
+        </thead>
+        <tbody>
+          {% for item in total_paid_vendor %}
+          <tr>
+              <td>{{item[1]}}</td>
+          </tr>
+          {% endfor %}
+              </tbody>
+      </table>
+      </div>
+      <div class="col-3 px-0">
+          <table class="table table-bordered table-hover">
+               <thead>
+           <tr style="text-align: left;"> 
+             <th data-priority="2">Total Project Created</th>
+           </tr>
+               </thead>
+               <tbody>
+                 {% for item in total_monthly_projects %}
+                 <tr>
+                     <td>{{item[1]}}</td>
+                 </tr>
+                 {% endfor %}
+                     </tbody>
+             </table>
+         </div>
+      <div class="col-2 px-0">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+
+		    <th data-priority="1">Total Poject Shared</th>
+		  </tr>
+          </thead>
+          <tbody>
+            {% for item in row %}
+            <tr>
+                <td>{{item[1]}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
+ <div class="col-2 px-0 d-none">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+
+		    <th data-priority="1">Average Share</th>
+		  </tr>
+          </thead>
+          <tbody>
+            {% for item in average_project %}
+            <tr>
+                <td>{{item}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+        <div class="col-3 px-0">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="2">Total Final Delivery Projects</th>
+		  </tr>
+          </thead>
+          <tbody>
+           {% for item in dis_project_count %}
+            <tr>
+                <td>{{item[1]}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
+        <div class="col-3 px-0 d-none">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="2">Average Final Delivery</th>
+		  </tr>
+          </thead>
+          <tbody>
+           {% for item in average_final_delivery %}
+            <tr>
+                <td>{{item}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+        <div class="col-3 px-0">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="2">Share By Client to Network</th>
+		  </tr>
+          </thead>
+          <tbody>
+           {% for item in shareBy_client %}
+            <tr>
+                <td>{{item[1]}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
+        <div class="col-3 px-0">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+
+		    <th data-priority="1">Total Reference Leads</th>
+		  </tr>
+          </thead>
+          <tbody>
+           {% for item in hotLeads %}
+            <tr>
+                <td>{{item[1]}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
+  
+       
+         <div class="col-3 px-0">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="2">Average Reference Leads</th>
+		  </tr>
+          </thead>
+          <tbody>
+           {% for item in average_ref_lead %}
+            <tr>
+                <td>{{item}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
+        <div class="col-2 px-0">
+          <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="2">Total Invite Sent</th>
+		  </tr>
+          </thead>
+          <tbody>
+           {% for item in invite_data %}
+            <tr>
+                <td>{{item[1]}}</td>
+            </tr>
+            {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
+      </div>
+      </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

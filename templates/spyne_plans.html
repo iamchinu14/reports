@@ -1,0 +1,67 @@
+<title>Spyne Share - Master Plans</title>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+    background-color: #4c4c4c;
+    color: white;
+  }
+  td {
+    border: 1px solid #353535;
+    padding: 10px;
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }  
+</style>
+
+<h2>Spyne Share - Master Plans</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table class="table table-bordered table-hover">
+          <thead>
+		  <tr style="text-align: left;">
+		    <th data-priority="1">plan_id</th> 
+		    <th data-priority="2">plane_name</th>
+		    <th data-priority="3">plan_cost</th>
+		    <th data-priority="4">share_size</th>
+		    <th data-priority="5">fr_photos</th>
+		    <th data-priority="6">plan_type</th>
+		    <th data-priority="7">plan_desc</th>
+		    <th data-priority="8">active</th>
+		    <th data-priority="9">created_on</th>
+	        <th data-priority="10">updated_on</th>
+		  </tr>
+          </thead>
+          <tbody>
+			{% for item in rows %}
+			<tr>
+			    <td>{{item[0]}}</td>
+			    <td>{{item[1]}}</td>
+			    <td>{{item[2]}}</td>
+			    <td>{{item[3]}}</td>
+			    <td>{{item[4]}}</td>
+			    <td>{{item[5]}}</td>
+			    <td>{{item[6]}}</td>
+			    <td>{{item[7]}}</td>
+			    <td>{{item[8]}}</td>
+		        <td>{{item[9]}}</td>
+			</tr>
+			{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

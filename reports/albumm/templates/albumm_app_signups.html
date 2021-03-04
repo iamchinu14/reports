@@ -1,0 +1,120 @@
+<title>Albumm - App Signups</title>
+<style>
+  #dataTable thead tr, #dashboard thead tr {
+	/* background-color: #EBEBEB; */
+	background-color: white;
+	font-size: 14px;
+	font-family: Segoe UI Semibold;
+}
+
+.header{
+  position: fixed;
+  top:2px;
+  background-color: black;
+  width: 100%;
+  height: 73px;
+}
+
+.img_pos{
+  position: relative;
+  top:20px;
+  left:22px;
+}
+
+#dataTable thead tr th, #dashboard thead tr th {
+	padding-bottom: 14px;
+	border: none;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+#dataTable tbody tr, #dashboard tbody tr {
+	counter-increment: rowNumber;
+	/* background-color: #e6e4e4; */
+	background-color: white;
+	
+}
+
+#dataTable tbody tr td:first-child::before, #dashboard tbody tr td:first-child::before
+	{
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+	padding-left: 13px;
+}
+
+/* #dataTable tbody tr td:first-child, #dashboard tbody tr td:first-child {
+	border-right: 1px solid #EBEBEB;
+} */
+
+#dataTable tbody tr td, #dashboard tbody tr td { 
+	border-bottom: 2px solid #EBEBEB;
+}
+
+#dataTable tbody tr td, #dashboard tbody tr td {
+	color: #000000;
+	vertical-align: middle;
+  text-align: center;
+}
+  #dataTable tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dashboard tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+#dataTable tbody tr:nth-child(odd), #dashboard tbody tr:nth-child(odd) {
+	/* background-color: #FFF; */
+	background-color: white;
+}
+
+</style>
+
+<div class="header"> <img class="img_pos" src="https://d1q9zt8mabqinx.cloudfront.net/landing-page/home/logo/Spyne-White-Full-Logo.png" alt="spyne" width="140"> </img> </div> 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<h2>Albumm - App Signups</h2>
+
+<div class="container" style="position: absolute; top:100px; width: 100%;">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table id="dataTable" class="table data-lead-table dataTable no-footer">
+          <thead>
+		  <tr>
+		  	<th>No</th>
+            <th>created_at</th> 
+            <th>vendor_name</th>
+            <th>Interested</th>
+		    <th>vendor_email</th>
+		    <th>vendor_phone</th>
+		  </tr>
+          </thead>
+          <tbody>
+			{% for item in rows %}
+			<tr>
+				<td></td>
+			    <td>{{item[0]}}</td>
+			    <td>{{item[1]}}</td>
+			    <td>{{item[2]}}</td>
+			    <td>{{item[3]}}</td>
+			    <td>{{item[4]}}</td>
+			</tr>
+			{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+} );
+</script>

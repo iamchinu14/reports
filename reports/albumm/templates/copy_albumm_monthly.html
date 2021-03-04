@@ -1,0 +1,162 @@
+<title>Albumn -Photographer Monthly Summary</title>
+<style>
+
+tr:nth-child(even) {
+    background-color: white;
+  }
+  tr:nth-child(odd) {
+    background-color: white;
+  } 
+  #dataTable thead tr, #dashboard thead tr {
+	/* background-color: #EBEBEB; */
+	background-color: white;
+	font-size: 14px;
+	font-family: Segoe UI Semibold;
+}
+
+#dataTable thead tr th, #dashboard thead tr th {
+	padding-bottom: 14px;
+	border: none;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+#dataTable tbody tr, #dashboard tbody tr {
+	counter-increment: rowNumber;
+	/* background-color: #e6e4e4; */
+	background-color: white;
+	
+}
+
+#dataTable tbody tr td:first-child::before, #dashboard tbody tr td:first-child::before
+	{
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+	padding-left: 13px;
+}
+
+/* #dataTable tbody tr td:first-child, #dashboard tbody tr td:first-child {
+	border-right: 1px solid #EBEBEB;
+} */
+
+#dataTable tbody tr td, #dashboard tbody tr td { 
+	border-bottom: 2px solid #EBEBEB;
+}
+
+
+#dataTable tbody tr td, #dashboard tbody tr td {
+	color: #000000;
+	vertical-align: middle;
+  text-align: center;
+}
+  #dataTable tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+
+.header{
+  position: fixed;
+  top:2px;
+  background-color: black;
+  width: 100%;
+  height: 73px;
+}
+
+
+.img_pos{
+  position: relative;
+  top:20px;
+  left:22px;
+}
+
+#dashboard tbody, #dashboard tbody {
+	font-size: 14px;
+}
+#dataTable tbody tr:nth-child(odd), #dashboard tbody tr:nth-child(odd) {
+	/* background-color: #FFF; */
+	background-color: white;
+}
+</style>
+
+
+<div class="header"> <img class="img_pos" src="https://d1q9zt8mabqinx.cloudfront.net/landing-page/home/logo/Spyne-White-Full-Logo.png" alt="spyne" width="140"> </img> </div> 
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+
+<h2 style="font-family: Roboto;font-size: 24px; margin-top: 6.5%;">Albumn -Photographer Monthly Summary</h2>
+
+<div class="container" style="position: absolute; top:200px; width: 100%;">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table id="dataTable" class="table data-lead-table dataTable">
+          <thead>
+		  <tr>
+        <th>No</th>
+        <th>Month	</th>
+		    <th>new Photographer</th>
+        <th>project shared</th>
+        <th>selection project</th>
+        <th>distribution project</th>
+        <th>photos shared</th>
+        <th>Multiple selection project</th>
+        <th>photos uploaded size</th>
+        <th>lead generated</th>
+        <!-- <th>contacts generated</th> -->
+        <th>download count</th>
+        <th>review generated</th>
+        <!-- <th>Average Contacts</th> -->
+        <th>Average Lead</th>
+		  </tr>
+          </thead>
+          <tbody>
+			{% for i1,i2,i3,i4,i5,i7,i8 in list1_list2 %}
+		<tr>
+          <td></td>
+		  <td>{{i1['date']}}</td>
+          <td>{{ i1['new_photographer'] }}</td>
+          <td>{{i2['project_shared']}}</td>
+          <td>{{i2['selection_project']}}</td>
+          <td>{{i2['distribution_project']}}</td>
+          <td>{{i2['photo_shared']}}</td>
+          <td>{{i3['COUNT(DISTINCT ss.id)']}}</td>
+          <td> {{i7['SUM(vps.project_size)']}} </td>
+          <td> {{i8['count']}} </td>
+          <!-- <td> {{i6['COUNT(DISTINCT sc.email)']}} </td> -->
+          <td> {{i5['download_count']}} </td>
+          <td> {{i4['total_reviews']}} </td>
+          
+          {% if i2['distribution_project'] == 0 %}
+          <td> 0 </td>
+          <td> 0 </td>
+          {% else %}
+          <!-- <td> {{i6['COUNT(DISTINCT sc.email)']/i2['distribution_project']}} </td>   -->
+          <td> {{i8['count']/i2['distribution_project']}} </td>
+          {% endif %}
+
+		</tr>
+			{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false,
+        "aoColumnDefs" : [ {
+					"bSortable" : false
+				} ] 
+    });
+    
+} );
+
+</script>

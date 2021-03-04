@@ -1,0 +1,566 @@
+<title>Spyne business signups Time Reports</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+ #dataTable thead tr, #dashboard thead tr, #dataTable1 thead tr, #dataTable2 thead tr, #dataTable3 thead tr{
+	/* background-color: #EBEBEB; */
+	background-color: white;
+	font-size: 14px;
+	font-family: Segoe UI Semibold;
+}
+
+.header{
+  position: fixed;
+  top:2px;
+  background-color: black;
+  width: 100%;
+  height: 73px;
+}
+
+.img_pos{
+  position: relative;
+  top:20px;
+  left:22px;
+}
+
+#dataTable thead tr th, #dataTable1 thead tr th,  #dataTable2 thead tr th,  #dataTable3 thead tr th, #dashboard thead tr th {
+	padding-bottom: 14px;
+	border: none;
+	padding-top: 15px;
+	padding-left: 15px;
+	color : rgba(0, 0, 0, 0.5);
+}
+
+#dataTable tbody tr, #dataTable1 tbody tr, #dataTable2 tbody tr, #dataTable3 tbody tr, #dashboard tbody tr {
+	counter-increment: rowNumber;
+	/* background-color: #e6e4e4; */
+	background-color: white;
+	
+}
+
+#dataTable tbody tr td:first-child::before, #dataTable1 tbody tr td:first-child::before, #dataTable2 tbody tr td:first-child::before, #dataTable3 tbody tr td:first-child::before, #dashboard tbody tr td:first-child::before
+	{
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+	padding-left: 13px;
+}
+
+/* #dataTable tbody tr td:first-child, #dashboard tbody tr td:first-child {
+	border-right: 1px solid #EBEBEB;
+} */
+
+#dataTable tbody tr td, #dataTable1 tbody tr td, #dataTable2 tbody tr td, #dataTable3 tbody tr td, #dashboard tbody tr td { 
+	border-bottom: 2px solid #EBEBEB;
+}
+
+#dataTable tbody tr td, #dataTable1 tbody tr td, #dataTable2 tbody tr td, #dataTable3 tbody tr td, #dashboard tbody tr td {
+	color: #000000;
+	vertical-align: middle;
+  text-align: center;
+}
+  #dataTable tbody, #dataTable1 tbody, #dataTable2 tbody,#dataTable3 tbody, #dashboard tbody {
+	font-size: 14px;
+}
+
+
+#dataTable tbody tr:nth-child(odd), #dataTable1 tbody tr:nth-child(odd), #dataTable2 tbody tr:nth-child(odd),#dataTable3 tbody tr:nth-child(odd) #dashboard tbody tr:nth-child(odd) {
+	/* background-color: #FFF; */
+	background-color: white;
+}
+
+.upper_box{
+	border: 1px solid #CCCCCC;
+	width:9%;
+	height: 69px;
+	border-radius: 10px;
+	position: absolute;
+	top: 85px;
+    right:30px;	
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabcontent_ {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabcontent__ {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.number{
+	text-align: center;
+	font-family: Roboto;
+}
+
+</style>
+
+<div class="header"> <img class="img_pos" src="https://d1q9zt8mabqinx.cloudfront.net/landing-page/home/logo/Spyne-White-Full-Logo.png" alt="spyne" width="140"> </img> </div> 
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<h2 style="font-family: Roboto;font-size: 24px; margin-top: 6.5%;">Spyne All Business Signups: By Time</h2> <hr>
+
+<div class="upper_box"> <p class="number"> {{total_summary[0]['count(id)']}} 
+
+<br> <b>Total Signups</b>  </p> </div>
+
+<div class="container" style="position: absolute; top:200px; width: 100%;">
+
+	<div class="tab">
+		<button class="tablinks_" onclick="onlyTabOpenFirst(event, 'Tabletop')">Table</button>
+		<button class="tablinks_" onclick="onlyTabOpenFirst(event, 'Graphtop')">Graph</button>
+  	</div>
+
+  <div id="Tabletop" class="tabcontent_">
+
+	<div class="tab">
+		<button class="tablinks" onclick="opentimeZone(event, 'Daily')">Daily</button>
+		<button class="tablinks" onclick="opentimeZone(event, 'Weekly')">Weekly</button>
+		<button class="tablinks" onclick="opentimeZone(event, 'Monthly')">Monthly</button>
+		<button class="tablinks" onclick="opentimeZone(event, 'Yearly')">Yearly</button>
+	  </div>
+
+
+  
+	  <div id="Daily" class="tabcontent">
+		<div class="row">
+			<div class="col-xs-12">
+			  <div class="table-responsive" data-pattern="priority-columns">
+				<table id="dataTable" class="table data-lead-table dataTable no-footer">
+				  <thead>
+				  <tr>
+                    <th style="position: absolute; left: 2%;">No</th>
+					<th>Day</th>
+					<th>Total Signups</th>				
+				  </tr>
+				  </thead>
+				  <tbody>			
+					{% for item in rows_daily %}
+					<tr>
+                        <td style="position: absolute; left: 2%;"></td>
+						<td>{{item['date']}}</td>
+						<td> {{item['COUNT(id)']}} </td>
+					</tr>
+					{% endfor %}
+				  </tbody>
+				</table>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+
+
+	  
+	  <div id="Weekly" class="tabcontent">
+		<div class="row">
+			<div class="col-xs-12">
+			  <div class="table-responsive" data-pattern="priority-columns">
+				<table id="dataTable1" class="table data-lead-table dataTable no-footer">
+				  <thead>
+				  <tr>
+                    <th style="position: absolute; left: 2%;">No</th>
+					<th>Week</th>
+					<th>Total Signups</th>
+				  </tr>
+				  </thead>
+				  <tbody>
+					{% for item in rows_weekly %}
+					<tr>
+						<td style="position: absolute; left: 2%;"></td>
+						<td>{{item['week']}}</td>
+						<td> {{item['COUNT(id)']}} </td>
+					
+					</tr>
+					{% endfor %}
+				  </tbody>
+				</table>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+	  
+	  <div id="Monthly" class="tabcontent">
+		<div class="row">
+			<div class="col-xs-12">
+			  <div class="table-responsive" data-pattern="priority-columns">
+				<table id="dataTable2" class="table data-lead-table dataTable no-footer">
+				  <thead>
+				  <tr>
+                    <th style="position: absolute; left: 2%;">No</th>
+					<th>Month</th>
+					<th>Total Signups</th>
+				
+				
+					
+				  </tr>
+				  </thead>
+				  <tbody>
+					{% for item in rows_monthly %}
+					<tr>
+                        <td style="position: absolute; left: 2%;"></td>
+						<td>{{item['month']}}</td>
+						<td> {{item['COUNT(id)']}} </td>
+					
+					</tr>
+					{% endfor %}
+				  </tbody>
+				</table>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+
+
+
+	  <div id="Yearly" class="tabcontent">
+		<div class="row">
+			<div class="col-xs-12">
+			  <div class="table-responsive" data-pattern="priority-columns">
+				<table id="dataTable3" class="table data-lead-table dataTable no-footer">
+				  <thead>
+				  <tr>
+                    <th style="position: absolute; left: 2%;">No</th>
+					<th>Year</th>
+					<th>Total Signups</th>
+				
+					
+				  </tr>
+				  </thead>
+				  <tbody>
+					{% for item in rows_yearly %}
+					<tr>
+                        <td style="position: absolute; left: 2%;"></td>
+						<td>{{item['year']}}</td>
+						<td> {{item['COUNT(id)']}} </td>
+					
+					</tr>
+					{% endfor %}
+				  </tbody>
+				</table>
+			  </div>
+			</div>
+		  </div>
+	  </div>
+
+
+</div>
+<div id="Graphtop" class="tabcontent_">
+
+	<div class="tab">
+		<button class="tablinks__" onclick="secondonlyTabOpen(event, 'DailyGraph')">Daily</button>
+		<button class="tablinks__" onclick="secondonlyTabOpen(event, 'WeeklyGraph')">Weekly</button>
+		<button class="tablinks__" onclick="secondonlyTabOpen(event, 'MonthlyGraph')">Monthly</button>
+		<button class="tablinks__" onclick="secondonlyTabOpen(event, 'YearlyGraph')">Yearly</button>
+	  </div>
+
+
+
+	<div id="DailyGraph" class="tabcontent__">
+		<div id="chart1">
+		</div>
+		
+	</div>
+
+	<div id="WeeklyGraph" class="tabcontent__">
+		<div id="chart2">
+		</div>
+		
+	</div>
+
+
+	<div id="MonthlyGraph" class="tabcontent__">
+		<div id="chart3">
+		</div>
+		
+	</div>
+
+
+	<div id="YearlyGraph" class="tabcontent__">
+		<div id="chart4">
+		</div>
+		
+	</div>
+
+</div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+
+var count=1
+
+$(document).ready( function () {
+    $('#dataTable').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+
+	$('#dataTable1').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+
+    $('#dataTable2').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+
+    $('#dataTable3').DataTable({
+      "pagingType" : "simple_numbers",
+				"bInfo" : false
+    });
+
+
+
+} );
+</script>
+
+<script>
+
+
+function onlyTabOpenFirst(evt, timeZone){
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent_");
+	  	for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+	  	}
+	  	tablinks = document.getElementsByClassName("tablinks_");
+	  	for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  	}
+	  	document.getElementById(timeZone).style.display = "block";
+	  	evt.currentTarget.className += " active";
+
+
+		if (timeZone=='Graphtop'){
+			secondonlyTabOpen(event, 'DailyGraph');
+		}
+
+	}
+
+	function onlyTabOpen(evt, timeZone){
+		var i, tabcontent, tablinks;
+
+		tabcontent = document.getElementsByClassName("tabcontent");
+	  	for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+	  	}
+	  	tablinks = document.getElementsByClassName("tablinks");
+	  	for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  	}
+	  	document.getElementById(timeZone).style.display = "block";
+	  	evt.currentTarget.className += " active";
+
+	}
+
+	function secondonlyTabOpen(evt, timeZone){
+		var i, tabcontent, tablinks;
+
+		tabcontent = document.getElementsByClassName("tabcontent__");
+	  	for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+	  	}
+	  	tablinks = document.getElementsByClassName("tablinks__");
+	  	for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  	}
+	  	document.getElementById(timeZone).style.display = "block";
+	  	evt.currentTarget.className += " active";
+		
+
+		if (timeZone=='DailyGraph'){
+			var start = "daily(yyyy-mm-dd)";
+		}
+		else if (timeZone=="WeeklyGraph"){
+			var start = "weekly(yyyy-week_no)";
+		}
+
+		else if (timeZone=="MonthlyGraph"){
+			var start = "monthly(yyyy-mm)";
+		}
+		else {
+			var start = "yearly(yyyy)";
+		}
+
+		var data={};
+		data.start = start
+
+		console.log(data);
+
+		$.ajax({
+		    type:'POST',
+		    data: data,     
+          	url: "http://spyne.co.in:5000/reports/spyne/shoot-request-time-report",
+          	success:function(resp) {
+
+			myFunction(resp,start);  
+			         
+		},
+		error : function(jqXHR,textStatus,errorThrown) {
+			console.log('in error');
+		}
+
+	});
+
+	}
+
+	function opentimeZone(evt, timeZone) {
+      
+	  var filter=timeZone;
+      var http = new XMLHttpRequest();
+      http.open('GET',`/reports/spyne/business-signups-time-report?key=${filter}`)
+      http.setRequestHeader("Content-type", "application/json; charset=utf-8");
+      http.send();
+	  window.location.replace(`/reports/spyne/business-signups-time-report?key=${timeZone}`)  
+	
+	}
+
+	window.onload = function() {   
+		if (window.location.href=="http://spyne.co.in:5000/reports/spyne/business-signups-time-report"){  
+			onlyTabOpenFirst(event, 'Tabletop')
+			onlyTabOpen(event, 'Daily')
+		}
+		else if (window.location.href=="http://spyne.co.in:5000/reports/spyne/business-signups-time-report?key=Monthly"){
+			onlyTabOpenFirst(event, 'Tabletop')
+			onlyTabOpen(event, 'Monthly')
+		}
+		else if (window.location.href=="http://spyne.co.in:5000/reports/spyne/business-signups-time-report?key=Weekly"){
+			onlyTabOpenFirst(event, 'Tabletop')
+			onlyTabOpen(event, 'Weekly')
+		}
+		
+		else if (window.location.href=="http://spyne.co.in:5000/reports/spyne/business-signups-time-report?key=Daily"){
+			onlyTabOpenFirst(event, 'Tabletop')
+			onlyTabOpen(event, 'Daily')
+		}
+		else{
+			onlyTabOpenFirst(event, 'Tabletop')
+			onlyTabOpen(event, 'Yearly')
+		}
+    };
+
+	
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+
+
+	function myFunction(resp,title_) {
+		
+		var y_axis = [];
+		var x_axis = [];
+		var i;
+
+		for (i = 0; i < resp.length; i++) {
+				y_axis.push(resp[i].count);
+				x_axis.push(resp[i].date);
+		}			
+		var options = {
+          series: [{
+            name: "No of Spyne All Business Signups",
+            data: y_axis
+        }],
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: true
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'No of Spyne All Business Signups vs Date',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], 
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          categories: x_axis,
+		  title: {
+            text: title_
+          }
+        }
+        };
+
+
+		if (title_=='daily(yyyy-mm-dd)'){
+			var response_ = '#chart1';
+			var chart = new ApexCharts(document.querySelector(response_), options);
+        	chart.render();
+		}
+		else if (title_=="weekly(yyyy-week_no)"){
+			var response_ = '#chart2';
+			var chart = new ApexCharts(document.querySelector(response_), options);
+        	chart.render();
+		}
+
+		else if (title_=="monthly(yyyy-mm)"){
+			var response_ = '#chart3';
+			var chart = new ApexCharts(document.querySelector(response_), options);
+        	chart.render();
+		}
+		else {
+			var response_ = '#chart4';
+			var chart = new ApexCharts(document.querySelector(response_), options);
+        	chart.render();
+		}
+	}
+
+
+</script>

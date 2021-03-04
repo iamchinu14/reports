@@ -1,0 +1,55 @@
+<title>Spyne Share - Selection Summary</title>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+    background-color: #4c4c4c;
+    color: white;
+  }
+  td {
+    border: 1px solid #353535;
+    padding: 10px;
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }  
+</style>
+
+<h2>Spyne Share - Selection Summary</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table class="table table-bordered table-hover">
+          <thead>
+      <tr style="text-align: left;">
+        <th data-priority="1">subdomain</th> 
+        <th data-priority="2">projects_count</th>
+        <th data-priority="3">photos_count</th>
+        <th data-priority="4">onboard_month</th>
+      </tr>
+          </thead>
+          <tbody>
+      {% for item in rows %}
+      <tr>
+          <td>{{item[0]}}</td>
+          <td>{{item[1]}}</td>
+          <td>{{item[2]}}</td>
+          <td>{{item[3]}}</td>
+      </tr>
+      {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
